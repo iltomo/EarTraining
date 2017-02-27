@@ -1,5 +1,6 @@
 import midi
 import random
+from datetime import datetime
 import os
 
 def playA4 ():
@@ -17,23 +18,23 @@ def play_pitch (pitch):
 def check_chord (pitch, maj):
 	check = 0
 	while check == 0:
-		chord = raw_input ('What was the chord?\n')
+		chord = raw_input ('\nWhat was the chord?\n')
 
 		T = 0
 		if chord [0] == 'A' or chord [0] == 'a':
-			T = 57
+			T = 45
 		elif chord [0] == 'B' or chord [0] == 'b':
-			T = 59
+			T = 47
 		elif chord [0] == 'C' or chord [0] == 'c':
-			T = 60
+			T = 48
 		elif chord [0] == 'D' or chord [0] == 'd':
-			T = 62
+			T = 50
 		elif chord [0] == 'E' or chord [0] == 'e':
-			T = 64
+			T = 52
 		elif chord [0] == 'F' or chord [0] == 'f':
-			T = 65
+			T = 53
 		elif chord [0] == 'G' or chord [0] == 'g':
-			T = 67
+			T = 55
 		else:
 			check = 0
 			print 'ERROR!!! Check the input again'
@@ -44,9 +45,7 @@ def check_chord (pitch, maj):
 		elif chord [1] == 'b':
 			T = T - 1
 
-		if pitch == 69 and T == 57:
-			print '\t\t\t\tRIGHT pitch\n'
-		elif pitch == T:
+		if pitch == T or pitch == T+12:
 			print '\t\t\t\tRIGHT pitch\n'
 		else:
 			print '\t\t\t\tWRONG pitch\n'
@@ -68,13 +67,10 @@ def check_chord (pitch, maj):
 			print 'ERROR!!! Check the input again'
 		
 
-SEED = input ('Give me a number\n')
-n = 0
 keep_working = 'Y'
 while keep_working == 'y' or keep_working == 'Y' or keep_working == 'yes' or keep_working == 'YES':
 
-	n = n+1
-	random.seed (SEED+n)
+	random.seed (datetime.now ())
 
 	pattern = midi.Pattern ()
 	track = midi.Track ()
@@ -82,7 +78,7 @@ while keep_working == 'y' or keep_working == 'Y' or keep_working == 'yes' or kee
 
 	playA4 ()
 
-	pitch = random.randint (57, 69)
+	pitch = random.randint (45, 59)
 
 	play_pitch (pitch)
 
