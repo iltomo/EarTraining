@@ -80,23 +80,18 @@ while keep_working == 'y' or keep_working == 'Y' or keep_working == 'yes' or kee
 
 	pitch = random.randint (45, 59)
 
-	play_pitch (pitch)
-
 	maj = random.randint (0,1)
 	if maj == 1:
+		play_pitch (pitch)
 		play_pitch (pitch+4)
 		play_pitch (pitch+7)
 		play_pitch (pitch+12)
-		play_pitch (pitch+7)
-		play_pitch (pitch+4)
 	else:
+		play_pitch (pitch)
 		play_pitch (pitch+3)
 		play_pitch (pitch+7)
 		play_pitch (pitch+12)
-		play_pitch (pitch+7)
-		play_pitch (pitch+3)
 
-	play_pitch (pitch)
 
 	eot = midi.EndOfTrackEvent (tick = 1)
 	track.append (eot)
