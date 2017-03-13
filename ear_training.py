@@ -16,6 +16,32 @@ def play_pitch (pitch):
 	track.append (offT)
 
 def check_chord (pitch, maj):
+
+	if pitch == 45 or pitch == 57:
+		strpitch = 'A'
+	if pitch == 46 or pitch == 58:
+		strpitch = 'A# || Bb'
+	if pitch == 47 or pitch == 59:
+		strpitch = 'B || Cb'
+	if pitch == 48:
+		strpitch = 'C'
+	if pitch == 49:
+		strpitch = 'C# || Db'
+	if pitch == 50:
+		strpitch = 'D'
+	if pitch == 51:
+		strpitch = 'D# || Eb'
+	if pitch == 52:
+		strpitch = 'E || Fb'
+	if pitch == 53:
+		strpitch = 'F'
+	if pitch == 54:
+		strpitch = 'F# || Gb'
+	if pitch == 55:
+		strpitch = 'G'
+	if pitch == 56:
+		strpitch = 'G# || Ab'
+
 	check = 0
 	while check == 0:
 		chord = raw_input ('\nWhat was the chord?\n')
@@ -48,20 +74,20 @@ def check_chord (pitch, maj):
 		if pitch == T or pitch == T+12:
 			print '\t\t\t\tRIGHT pitch\n'
 		else:
-			print '\t\t\t\tWRONG pitch\n'
+			print '\t\t\t\tWRONG pitch\n\t\t\t\t\tIt was ' + strpitch + '\n'
 
 		if 'maj' in chord or 'Maj' in chord or 'MAJ' in chord:
 			check = 1
 			if maj == 1:
 				print '\t\t\t\tRIGHT tone\n' 
 			else:
-				print '\t\t\t\tWRONG tone\n'
+				print '\t\t\t\tWRONG tone\n\t\t\t\t\tIt was MIN\n'
 		elif 'min' in chord or 'Min' in chord or 'MIN' in chord:
 			check = 1
 			if maj == 0:
 				print '\t\t\t\tRIGHT tone\n' 
 			else:
-				print '\t\t\t\tWRONG tone\n'
+				print '\t\t\t\tWRONG tone\n\t\t\t\t\tIt was MAJ\n'
 		else:
 			check = 0
 			print 'ERROR!!! Check the input again'
